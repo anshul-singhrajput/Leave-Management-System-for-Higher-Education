@@ -1,0 +1,300 @@
+<div class="section-header">
+    <h1>आवेदन के स्थिति की जानकारी</h1>
+    <div class="section-header-breadcrumb">
+        <div class="breadcrumb-item active"><a href="#">अवकाश</a></div>
+        <div class="breadcrumb-item">आवेदन के स्थिति की जानकारी</div>
+    </div>
+</div>
+
+<div class="section-body">
+    <div class="card mt-3">
+        <br>
+        <div *ngFor="let c of HeaderLabel;" class="mb-3 rounded text-bold align-center"
+            style="font-size: large; background-color:white;">
+            <div class="row">
+                <div class="col-md-12">
+                    <label class="text-bold"> कर्मचारी कोड : </label> &nbsp; <label> {{c.EmployeeId}} </label>
+                    &nbsp;&nbsp;
+
+                    <label class="text-bold"> नाम: </label> &nbsp; <label> {{c.TeacherName}} </label> &nbsp;&nbsp;
+
+                    <label class="text-bold"> जिला: </label> &nbsp; <label> {{c.DistName}} </label> &nbsp;&nbsp;
+
+                    <label class="text-bold"> कर्मचारी स्थिति: </label> &nbsp; <label> Active </label>
+                </div>
+            </div>
+            <div class="srow pl-20 pr-20 mt-20">
+                <div class="row">
+                    <!-- Card 1 -->
+                    <div class="col-xl-3 col-lg-6">
+                        <div class="card">
+                            <div class="card-body card-type-3">
+                                <div class="row">
+                                    <div class="col">
+                                        <h1 class="text-muted mb-0">{{c.EL}}</h1>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="card-circle l-bg-orange text-white">
+                                            <!-- <i class="fas fa-book-open"></i> -->
+                                            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="assignment"></mat-icon>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-nowrap">अर्जित अवकाश शेष</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="col-xl-3 col-lg-6">
+                        <div class="card">
+                            <div class="card-body card-type-3">
+                                <div class="row">
+                                    <div class="col">
+                                        <h1 class="text-muted mb-0">{{c.HPL}}</h1>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="card-circle l-bg-cyan text-white">
+                                            <!-- <i class="fas fa-book-open"></i> -->
+                                            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="book"></mat-icon>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-nowrap">अर्ध वेतन अवकाश शेष</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="col-xl-3 col-lg-6">
+                        <div class="card">
+                            <div class="card-body card-type-3">
+                                <div class="row">
+                                    <div class="col">
+                                        <h1 class="text-muted mb-0">{{c.CL}}</h1>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="card-circle l-bg-green text-white">
+                                            <!-- <i class="fas fa-book-open"></i> -->
+                                            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="chrome_reader_mode"></mat-icon>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-nowrap">आकस्मिक अवकाश शेष</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="col-xl-3 col-lg-6">
+                        <div class="card">
+                            <div class="card-body card-type-3">
+                                <div class="row">
+                                    <div class="col">
+                                        <h1 class="text-muted mb-0">{{c.RL}}</h1>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="card-circle l-bg-purple text-white">
+                                            <!-- <i class="fas fa-book-open"></i> -->
+                                            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="description"></mat-icon>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-nowrap">ऐच्छिक अवकाश शेष</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <!-- <section id="multiple-validation"> -->
+
+            <!-- Material Tabs Start-->
+            <mat-tab-group>
+                <mat-tab label="सभी आवेदन ({{AllApplicationCount}})">
+                    <div class="wrapper">
+
+                        <table class="table table-bordered table-hover" cellspacing="0" width="100%">
+                            <thead class="text-bold">
+                                <tr>
+                                    <td class="text-center">क्र.</td>
+                                    <td class="text-center">आवेदन क्रमांक</td>
+                                    <td class="text-center">आवेदन का प्रकार</td>
+                                    <td class="text-center">आवेदन की अवधि</td>
+                                    <td class="text-center">आवेदन की तिथि</td>
+                                    <td class="text-center">स्थिति</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let c of AllApplication; let i = index">
+                                    <td class="text-center">{{i+1}}</td>
+                                    <td class="text-center">{{c.ApplicationId}}</td>
+                                    <td>{{c.LeaveName}}</td>
+                                    <td class="text-center">{{c.ApplicationPeriod}}</td>
+                                    <td class="text-center">{{c.AppliedDate}}</td>
+                                    <td>{{c.StatusName}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                        <Label *ngIf="MsgShow" class="text-center" style="color:red;">
+                            रिकॉर्ड उपलब्ध नहीं है</Label>
+
+                    </div>
+                </mat-tab>
+
+                <mat-tab label="अवकाश के लिए आवेदन ({{LeaveAppliedCount}})">
+                    <div class="wrapper">
+
+                        <table class="table table-bordered table-hover" cellspacing="0" width="100%">
+                            <thead class="text-bold">
+                                <tr>
+                                    <td class="text-center">क्र.</td>
+                                    <td class="text-center">आवेदन क्रमांक</td>
+                                    <td class="text-center">आवेदन का प्रकार</td>
+                                    <td class="text-center">आवेदन की अवधि</td>
+                                    <td class="text-center">आवेदन की तिथि</td>
+                                    <td class="text-center">स्थिति</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let c of LeaveApplied; let i = index">
+                                    <td class="text-center">{{i+1}}</td>
+                                    <td class="text-center">{{c.ApplicationId}}</td>
+                                    <td>{{c.LeaveName}}</td>
+                                    <td class="text-center">{{c.ApplicationPeriod}}</td>
+                                    <td class="text-center">{{c.AppliedDate}}</td>
+                                    <td>{{c.StatusName}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </mat-tab>
+
+                <mat-tab label="अवकाश के बाद जॉइन ({{joiningCount}})">
+                    <div class="wrapper">
+
+                        <table class="table table-bordered table-hover" cellspacing="0" width="100%">
+                            <thead class="text-bold">
+                                <tr>
+                                    <td class="text-center">क्र.</td>
+                                    <td class="text-center">आवेदन क्रमांक</td>
+                                    <td class="text-center">आवेदन का प्रकार</td>
+                                    <td class="text-center">आवेदन की अवधि</td>
+                                    <td class="text-center">आवेदन की तिथि</td>
+                                    <td class="text-center">स्थिति</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let c of joining; let i = index">
+                                    <td class="text-center">{{i+1}}</td>
+                                    <td class="text-center">{{c.ApplicationId}}</td>
+                                    <td>{{c.LeaveName}}</td>
+                                    <td class="text-center">{{c.ApplicationPeriod}}</td>
+                                    <td class="text-center">{{c.AppliedDate}}</td>
+                                    <td>{{c.StatusName}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </mat-tab>
+                <mat-tab label="अवकाश एक्सटैन्शन ({{LeaveExtensionCount}})">
+                    <div class="wrapper">
+
+                        <table class="table table-bordered table-hover" cellspacing="0" width="100%">
+                            <thead class="text-bold">
+                                <tr>
+                                    <td class="text-center">क्र.</td>
+                                    <td class="text-center">आवेदन क्रमांक</td>
+                                    <td class="text-center">आवेदन का प्रकार</td>
+                                    <td class="text-center">आवेदन की अवधि</td>
+                                    <td class="text-center">आवेदन की तिथि</td>
+                                    <td class="text-center">स्थिति</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let c of LeaveExtension; let i = index">
+                                    <td class="text-center">{{i+1}}</td>
+                                    <td class="text-center">{{c.ApplicationId}}</td>
+                                    <td>{{c.LeaveName}}</td>
+                                    <td class="text-center">{{c.ApplicationPeriod}}</td>
+                                    <td class="text-center">{{c.AppliedDate}}</td>
+                                    <td>{{c.StatusName}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </mat-tab>
+                <mat-tab label="स्टेशन छोड़ने की अनुमति (0)">
+                    <div class="wrapper">
+
+                        <table class="table table-bordered table-hover" cellspacing="0" width="100%">
+                      <thead class="text-bold">
+                        <tr>
+                         <td class="text-center">क्र.</td>
+                          <td class="text-center">आवेदन क्रमांक</td>
+                          <td class="text-center">आवेदन का प्रकार</td>
+                          <td class="text-center">आवेदन की अवधि</td>
+                          <td class="text-center">आवेदन की तिथि</td>
+                          <td class="text-center">स्थिति</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let c of StationLeave; let i = index">
+                          <td class="text-center">{{i+1}}</td>
+                          <td class="text-center">{{c.ApplicationId}}</td>
+                          <td>{{c.LeaveName}}</td>
+                          <td class="text-center">{{c.ApplicationPeriod}}</td>
+                          <td class="text-center">{{c.AppliedDate}}</td>
+                          <td>{{c.StatusName}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    </div>
+                </mat-tab>
+                <mat-tab label="अवकाश निरस्त ({{cancellationCount}})">
+                    <div class="wrapper">
+
+                        <table class="table table-bordered table-hover" cellspacing="0" width="100%">
+                            <thead class="text-bold">
+                                <tr>
+                                    <td class="text-center">क्र.</td>
+                                    <td class="text-center">आवेदन क्रमांक</td>
+                                    <td class="text-center">आवेदन का प्रकार</td>
+                                    <td class="text-center">आवेदन की अवधि</td>
+                                    <td class="text-center">आवेदन की तिथि</td>
+                                    <td class="text-center">स्थिति</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let c of cancellation; let i = index">
+                                    <td class="text-center">{{i+1}}</td>
+                                    <td class="text-center">{{c.ApplicationId}}</td>
+                                    <td>{{c.LeaveName}}</td>
+                                    <td class="text-center">{{c.ApplicationPeriod}}</td>
+                                    <td class="text-center">{{c.AppliedDate}}</td>
+                                    <td>{{c.StatusName}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+            <!-- Material Tabs End -->
+
+
+            <!-- </section> -->
+        </div>
+
+
+    </div>
+
+</div>

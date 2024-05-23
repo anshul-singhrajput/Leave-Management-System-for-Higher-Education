@@ -1,0 +1,72 @@
+<div class="main-sidebar sidebar-style-2">
+    <aside id="sidebar-wrapper">
+        <div class="sidebar-brand">
+            <a routerLink="/report/leaveDashboard">
+                <!-- <img alt="image" src="assets/images/logo.png" class="header-logo" /> -->
+                <span class="logo-name">Leave Management System </span>
+            </a>
+        </div>
+
+        <ul class="sidebar-menu">
+            <li class="menu-header">Dashboard</li>
+            <li *ngFor="let um of menu; let i =index">
+                <a *ngIf="um.hassub ; else prompt" [attr.href]="'#tab_'+um.menuid" data-toggle="collapse" aria-expanded="false"
+                class="nav-link has-dropdown"><i class={{um.icon}}></i> {{um.menuname}}</a>
+
+                <ul class="dropdown-menu" id="{{'tab_'+um.menuid}}">
+                    <li *ngFor="let sm of submenu" >                            
+                        <a *ngIf="um.menuid==sm.menuid && sm.isactive" routerLink={{sm.menulink}} title={{sm.menuname}}>
+                            <i class="ft-arrow-right submenu-icon"></i>{{sm.menuname}}
+                        </a>
+                    </li>
+                </ul>
+
+                <ng-template #prompt>
+                    <a *ngIf="um.isactive" title={{um.menuname}} routerLink={{um.menulink}}><i class={{um.icon}}></i>
+                        {{um.menuname}} </a>
+
+                </ng-template>
+            </li>
+            <!-- <li><a class="nav-link" routerLink="teacher/home"><i class="fas fa-home"></i><span>होम</span></a></li>
+            <li><a class="nav-link" routerLink="teacher/profile"><i class="far fa-user"></i><span>अपना प्रोफाइल
+                        देखे</span></a></li>
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-user-slash"></i><span>अवकाश</span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" routerLink="leave/applyLeave">आवेदन करे</a></li>
+                    <li><a class="nav-link" routerLink="leave/extendLeave">आवेदन को आगे बढ़ाएं</a></li>
+                    <li><a class="nav-link" routerLink="leave/cancelLeave">आवेदन निरस्त करे </a></li>
+                    <li><a class="nav-link" routerLink="leave/joinLeave">ज्वाइन करे </a></li>
+                    <li><a class="nav-link" href="Blank.html">अवकाश स्थिति</a></li>
+                    <li><a class="nav-link" href="Blank.html">वर्तमान वर्ष में अवकाश</a></li>
+                    <li><a class="nav-link" href="Blank.html">अवकाश सम्बन्धी जानकारी</a></li>
+                    <li><a class="nav-link" href="Blank.html">अवकाश डैशबोर्ड</a></li>
+                </ul>
+            </li> -->
+
+            <!-- <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-level-down-alt"></i><span>Multilevel</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Menu 1</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="has-dropdown">Menu 2</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Child Menu 1</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="has-dropdown">Child Menu 2</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Child Menu 1</a></li>
+                                    <li><a href="#">Child Menu 2</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Child Menu 3</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li> -->
+            <!-- <li><a class="nav-link" routerLink="about"><i class="fas fa-briefcase"></i><span>रिपोर्ट </span></a>
+            </li> -->
+            <!-- <li><a class="nav-link" routerLink="contact"><i class="fas fa-tty"></i><span>संपर्क</span></a></li> -->
+        </ul>
+    </aside>
+</div>

@@ -1,0 +1,85 @@
+.main-banner{
+    height: 40%;
+    width : 100%;
+}
+.banner{
+    position: relative;
+    width: 100vw;
+}
+
+.medium-6 {
+    width: 50%;
+}
+
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+body {
+    font-family: "Open Sans", sans-serif;
+    color: #444444;
+  }
+  
+  a {
+    color: #5fcf80;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: #86badb;
+    text-decoration: none;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Raleway", sans-serif;
+  }
+  
+  /*--------------------------------------------------------------
+# Features
+--------------------------------------------------------------*/
+.features {
+    padding-top: 0px;
+  }
+  
+  .features .icon-box {
+    display: flex;
+    align-items: center;
+    padding: -25px;
+    transition: 0.3s;
+    border: 2px solid #e5dfebd4;
+  }
+  
+  .features .icon-box i {
+    font-size: 32px;
+    padding-right: 10px;
+    line-height: 1;
+  }
+  
+  .features .icon-box h3 {
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-size: 16px;
+  }
+  
+  .features .icon-box h3 a {
+    color: #37423b;
+    transition: 0.3s;
+  }
+  
+  .features .icon-box:hover {
+    border-color: #3a3c3b;
+  }
+  
+  .features .icon-box:hover h3 a {
+    color:#3a3c3b;
+  }
+
+
+

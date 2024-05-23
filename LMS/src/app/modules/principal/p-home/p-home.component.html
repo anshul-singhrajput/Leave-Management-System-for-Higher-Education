@@ -1,0 +1,82 @@
+<div class="section-header">
+    <h1>शिक्षक प्रोफाइल </h1>
+    <div class="section-header-breadcrumb">
+        <div class="breadcrumb-item active"><a href="/principal/p_profile">अवकाश</a></div>
+        <div class="breadcrumb-item">शिक्षक प्रोफाइल</div>
+    </div>
+</div>
+
+<section style="background-color: #497aaa; border-radius: 8px;">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-body text-center">
+                        <img *ngIf="gender==2" src="assets/images/female.png" alt="avatar"
+                        class="rounded-circle img-fluid" style="width: 150px;">
+                      <img *ngIf="gender==1" src="assets/images/male.jpg" alt="avatar"
+                        class="rounded-circle img-fluid" style="width: 150px;">
+                        <h5 class="my-3">{{name}}</h5>
+                        <p class="text-muted mb-1">शिक्षक कोड : {{rmn}}</p>
+                        <p class="text-muted mb-4">वर्तमान पदस्थापना तिथि :- {{presentWorkingDate | date: 'dd/MM/yyyy'}}
+                        </p>
+                        <p class="text-muted mb-4">प्रथम नियुक्ति :- {{JoiningData | date: 'dd/MM/yyyy'}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0"><b>वर्तमान पद</b></p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{Designation}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0"><b>वर्तमान में पदस्थ UDISE कोड </b></p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{UdiseCode}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0"><b>महाविद्यालय का नाम </b></p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{SchoolName}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0"><b>विकास खंड </b></p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{DistName}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0"><b>कार्यरत स्थिति </b></p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">Working</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

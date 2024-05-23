@@ -1,0 +1,26 @@
+.navbar{
+    height: 90px;
+    background-color: white;
+}
+
+#belowheader{
+    height: 60px;
+    background-color: rgb(42, 39, 64);
+}
+
+a {
+    color: white;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.srow {
+    width: 100%;
+    float: left;
+    line-height: 15px;
+}
+
+
+
+
+

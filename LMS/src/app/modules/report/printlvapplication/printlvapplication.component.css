@@ -1,0 +1,30 @@
+@media print {
+    .hide-in-print{
+        display: none !important;
+    }
+}
+
+.borderless table {
+    border-top-style: none !important;
+    border-left-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+}
+
+.table td{
+    border-top: 0px solid #e3e6f0!important;
+}
+
+p span {
+    display: block;
+  }
+
+  /* @media print {
+    :host {
+      display: none;
+    }
+  } */
+
+  ::-webkit-scrollbar {
+    display: none;
+}

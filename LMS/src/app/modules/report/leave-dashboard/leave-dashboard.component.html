@@ -1,0 +1,259 @@
+<div class="section-header">
+    <h1>होम</h1>
+    <div class="section-header-breadcrumb">
+        <div class="breadcrumb-item active"><a href="#">अवकाश</a></div>
+        <div class="breadcrumb-item">होम डैशबोर्ड</div>
+    </div>
+</div>
+
+<div class="section-body">
+    <section id="multiple-validation">
+        <!-- Row Dashboard -->
+        <div *ngFor="let c of AvailableLeave;" class="mb-3 rounded text-bold align-center col-lg-12"
+            style="font-size: large; background-color:white;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="alert alert-darks alert-msg" role="alert">
+                        <label class="text-bold"> कर्मचारी कोड : </label> &nbsp; <label> {{c.EmployeeId}} </label>
+                        &nbsp;&nbsp;
+
+                        <label class="text-bold"> नाम: </label> &nbsp; <label> {{c.TeacherName}} </label>
+                        &nbsp;&nbsp;
+
+                        <label class="text-bold"> जिला: </label> &nbsp; <label> {{c.DistName}} </label> &nbsp;&nbsp;
+
+                        <label class="text-bold"> कर्मचारी स्थिति: </label> &nbsp; <label> Active </label>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+
+                    <div class="row">
+                        <!-- Card 1 -->
+                        <div class="col-xl-3 col-lg-6">
+                            <div class="card">
+                                <div class="card-body card-type-3">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h1 class="text-muted mb-0">{{c.RL}}</h1>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="card-circle l-bg-purple text-white">
+                                                <mat-icon aria-hidden="false" aria-label="Example home icon"
+                                                    fontIcon="description"></mat-icon>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <p class="mt-3 mb-0 text-muted text-sm">
+                                        <span class="text-nowrap">ऐच्छिक अवकाश</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="col-xl-3 col-lg-6">
+                            <div class="card">
+                                <div class="card-body card-type-3">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h1 class="text-muted mb-0">{{c.CL}}</h1>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="card-circle l-bg-green text-white">
+                                                <!-- <i class="fas fa-book-open"></i> -->
+                                                <mat-icon aria-hidden="false" aria-label="Example home icon"
+                                                    fontIcon="chrome_reader_mode"></mat-icon>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <p class="mt-3 mb-0 text-muted text-sm">
+                                        <span class="text-nowrap">आकस्मिक अवकाश</span>
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="col-xl-3 col-lg-6">
+                            <div class="card">
+                                <div class="card-body card-type-3">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h1 class="text-muted mb-0">{{c.EL}}</h1>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="card-circle l-bg-orange text-white">
+                                                <!-- <i class="fas fa-book-open"></i> -->
+                                                <mat-icon aria-hidden="false" aria-label="Example home icon"
+                                                    fontIcon="assignment"></mat-icon>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <p class="mt-3 mb-0 text-muted text-sm">
+                                        <span class="text-nowrap">अर्जित अवकाश</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="col-xl-3 col-lg-6">
+                            <div class="card">
+                                <div class="card-body card-type-3">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h1 class="text-muted mb-0">{{c.HPL}}</h1>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="card-circle l-bg-cyan text-white">
+                                                <!-- <i class="fas fa-book-open"></i> -->
+                                                <mat-icon aria-hidden="false" aria-label="Example home icon"
+                                                    fontIcon="book"></mat-icon>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <p class="mt-3 mb-0 text-muted text-sm">
+                                        <span class="text-nowrap">अर्ध वेतन अवकाश</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="row">
+
+                        <!-- Chart 1-->
+                        <div class="col-md-4">
+                            <div class="srow">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title mb-0">वर्ष {{CurrYear}} में स्वीकृत अवकाश</h4>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="chart">
+                                            <canvas baseChart [type]="pieChartType" [datasets]="pieChartData"
+                                                [labels]="pieChartLabels" [options]="pieChartOptions" [legend]="true">
+                                            </canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 2nd Col -->
+                        <div class="col-md-4">
+                            <!-- First Row -->
+                            <div class="card" style="min-height: 170px; max-height: 200px;">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4 class="card-title mb-0">लंबित आवेदन</h4>
+                                        </div>
+                                        <!-- <div class="col-md-3">
+                                            <span style="font-weight: bold; font-size: 1.3em; "> </span>
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-left: 10px;">
+                                    <div class="col-md-12" *ngFor="let c of PendingApp;">
+                                        <button class="mat-fab" mat-fab
+                                            style="background: linear-gradient(135deg, #f48665 0%, #fda23f 100%) !important;"
+                                            aria-label="Example icon button with a delete icon">
+                                            <label>{{c.RL}} RL</label>
+                                        </button>
+
+                                        <button class="mat-fab" mat-fab
+                                            style="background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%) !important;"
+                                            aria-label="Example icon button with a delete icon">
+                                            <label>{{c.CL}} CL</label>
+                                        </button>
+
+                                        <button class="mat-fab" mat-fab
+                                            style="background: linear-gradient(135deg, #9a56ff 0%, #e36cd9 100%) !important;"
+                                            aria-label="Example icon button with a delete icon">
+                                            <label>{{c.EL}} EL</label>
+                                        </button>
+
+                                        <button class="mat-fab" mat-fab
+                                            style="background: linear-gradient(135deg, #289cf5, #84c0ec) !important;"
+                                            aria-label="Example icon button with a delete icon">
+                                            <label>{{c.HPL}} HPL</label>
+                                        </button>
+
+                                        <!-- </div> -->
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                            <!-- 2nd Row -->
+                            <div class="card" style="min-height: 170px;" *ngFor="let c of LeaveJoining;">
+                                <!-- *ngFor="let c of LeaveJoining;" -->
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4 class="card-title mb-0">लंबित जॉइनिंग अवकाश</h4>
+                                        </div>
+                                        <!-- <div class="col-md-3">
+                                            <span style="font-weight: bold; font-size: 1.3em; "> </span>
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-left: 10px; margin-right: 10px;">
+                                    <div class="col-md-12">
+                                        <button mat-raised-button
+                                            style="width: 100%; background: linear-gradient(135deg, #289cf5, #84c0ec) !important;">
+                                            <label style="color: white; font-weight: bolder;">
+                                                {{c.HPL}} अर्ध वेतन अवकाश
+                                            </label>
+                                        </button>
+                                        <hr>
+
+                                        <button mat-raised-button
+                                            style="width: 100%; background: linear-gradient(135deg, #9a56ff 0%, #e36cd9 100%) !important;">
+                                            <label style="color: white; font-weight: bolder;">
+                                                {{c.EL}} अर्जित छुट्टी
+                                            </label>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <!-- Calendar -->
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body" style="padding-right:30px">
+                                        <full-calendar [options]="calendarOptions"></full-calendar>
+                                        <br>
+                                        <div *ngFor="let c of LeaveHistory;" class="align-center">
+                                            <span class="text-bold font-medium-2">
+                                                वर्तमान वर्ष में अवकाश
+                                            </span>
+                                            <br>
+                                            <br>
+                                            <span> {{c.LeaveFrom}} </span> - <span> {{c.LeaveTo}} </span>
+                                            <br>
+                                            <span style="padding-left:40;"> {{c.LeaveName}} </span>
+                                            <br> <br>
+                                            <button mat-stroked-button color="accent" (click)="LeaveHistoryPage()">
+                                                विवरण देखें 
+                                            </button>
+                                        </div>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

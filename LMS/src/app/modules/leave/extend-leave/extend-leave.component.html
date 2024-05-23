@@ -1,0 +1,56 @@
+<div class="section-header">
+    <h1>अवकाश के आवेदन को आगे बढ़ाये </h1>
+    <div class="section-header-breadcrumb">
+        <div class="breadcrumb-item active"><a href="#">अवकाश</a></div>
+        <div class="breadcrumb-item">अवकाश के आवेदन को आगे बढ़ाये</div>
+    </div>
+</div>
+
+<div class="section-body">
+    <div class="card mt-3">
+        <div class="card-body">
+            <section id="multiple-validation">
+                <form [formGroup]="extendleaveform" novalidate>
+                    <div class="table-responsive">
+                        <table id="excel-table" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>क्र.</th>
+                                    <th>आवेदन क्रमांक</th>
+                                    <th>अवकाश का प्रकार</th>
+                                    <th>कारण</th>
+                                    <th>दिनांक से</th>
+                                    <th>दिनांक तक</th>
+                                    <th>अवकाश (दिन में)</th>
+                                    <th>अवकाश आगे बढ़ाएं</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let l of leaves; let i = index">
+                                    <!-- <div [formGroupName]="i"> -->
+                                    <td>{{i+1}}</td>
+                                    <td>{{l.ApplicationId}}</td>
+                                    <td>{{l.LeaveName}}</td>
+                                    <td>{{l.Reason}}</td>
+                                    <td>{{l.FromDate}}</td>
+                                    <td>{{l.ToDate}}</td>
+                                    <td>{{l.LeaveDays}}</td>
+                                    <td> <button *ngIf="!l.IsExtended" type="button"
+                                            [routerLink]="['/leave/extendLeaveid', l.ApplicationId]"
+                                            class="btn btn-primary">
+                                            <i class="ft-navigation mr-1"></i>आगे बढ़ाएं</button></td>
+                                    <!-- </div> -->
+                                </tr>
+                                <tr *ngIf="this.leaves?.length===0">
+                                    <td colspan='8' style="text-align: center;">कोई रिकॉर्ड प्राप्त नहीं हुआ |</td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>

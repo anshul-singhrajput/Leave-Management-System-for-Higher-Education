@@ -1,0 +1,57 @@
+<header>
+    <div class="navbar-bg"></div>
+    <nav class="navbar navbar-expand-lg main-navbar">
+        <div class="form-inline me-auto">
+            <ul class="navbar-nav me-3">
+                <li>
+                    <a href="/teacher/home" data-bs-toggle="sidebar" class="nav-link nav-link-lg collapse-btn">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <ul class="navbar-nav navbar-right">
+            <!-- <button mat-raised-button
+            style="width: 100%; background: linear-gradient(135deg, #289cf5, #84c0ec) !important;">
+            <label style="color: white; font-weight: bolder;">
+           
+            </label>
+        </button> -->
+            <div>
+                <button type="button" class="btn btn-primary">
+                    <span class="badge badge-light">
+                        <label> User : </label> &nbsp; <label>{{name}}</label>
+                    </span>
+                </button>
+                &nbsp;&nbsp;
+                <button type="button" class="btn btn-primary">
+                    <span class="badge badge-light">
+                        <label> Designation: </label> &nbsp; <label>{{Designation}}</label>
+                    </span>
+                </button>
+            </div>
+
+            <li class="dropdown">
+                <a href="#" data-bs-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                    <img alt="image" src="assets/images/user.png" class="user-img-radious-style">
+                    <span class="d-sm-none d-lg-inline-block"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-title">Hello</div>
+
+                    <!-- <a href="#" class="dropdown-item has-icon">
+                        <i class="far fa-user"></i>Profile
+                    </a> -->
+                    <!-- <a routerLink="/updatePassword" class="dropdown-item has-icon">
+                        <i class="fas fa-cog"></i>Update Password
+                    </a> -->
+                    <div class="dropdown-divider"></div>
+                    <a (click)="logout()" class="dropdown-item has-icon text-danger">
+                        <i class="fas fa-sign-out-alt"></i>Logout
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+</header>

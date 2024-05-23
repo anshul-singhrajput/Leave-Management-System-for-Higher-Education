@@ -1,0 +1,181 @@
+<div class="section-header">
+    <h1>स्टेट एडमिन होम </h1>
+    <div class="section-header-breadcrumb">
+        <div class="breadcrumb-item active"><a href="">अवकाश</a></div>
+        <div class="breadcrumb-item">स्टेट एडमिन होम</div>
+    </div>
+</div>
+
+<div class="section-body">
+    <section id="multiple-validation">
+        <!-- Row Dashboard -->
+        <div class="mb-3 rounded text-bold align-center col-lg-12" style="font-size: large; background-color:white;">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="alert alert-darks alert-msg" role="alert">
+                        <!-- <label class="text-bold"> कर्मचारी कोड : </label> &nbsp; <label>av</label> -->
+                        &nbsp;&nbsp;
+
+                        <label class="text-bold"> नाम: </label> &nbsp; <label> {{Sname}}</label>
+                        &nbsp;&nbsp;
+
+                        <!-- <label class="text-bold"> जिला: </label> &nbsp; <label> ff</label> &nbsp;&nbsp; -->
+
+                        <label class="text-bold"> अधिकारी स्थिति: </label> &nbsp; <label> Active </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="row">
+                    <!-- Card 1 -->
+                    <div class="col-xl-4 col-lg-6">
+                        <div class="card">
+                            <div class="card-body card-type-3">
+                                <div class="row">
+                                    <div class="col">
+                                        <h1 class="text-muted mb-0">{{TA}}</h1>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="card-circle l-bg-purple text-white">
+                                            <i class="fas fa-university"></i>
+                                            <!-- <mat-icon aria-hidden="false" aria-label="Example home icon"
+                                                fontIcon="description"></mat-icon> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-nowrap">कुल आवेदन</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="col-xl-4 col-lg-6">
+                        <div class="card">
+                            <div class="card-body card-type-3">
+                                <div class="row">
+                                    <div class="col">
+                                        <h1 class="text-muted mb-0">{{AA}}</h1>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="card-circle l-bg-purple text-white">
+                                            <i class="fas fa-university"></i>
+                                            <!-- <mat-icon aria-hidden="false" aria-label="Example home icon"
+                                                fontIcon="description"></mat-icon> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-nowrap">स्वीकृत आवेदन</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="col-xl-4 col-lg-6">
+                        <div class="card">
+                            <div class="card-body card-type-3">
+                                <div class="row">
+                                    <div class="col">
+                                        <h1 class="text-muted mb-0">{{DA}}</h1>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="card-circle l-bg-purple text-white">
+                                            <i class="fas fa-university"></i>
+                                            <!-- <mat-icon aria-hidden="false" aria-label="Example home icon"
+                                                fontIcon="description"></mat-icon> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-nowrap">अस्वीकृत आवेदन</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- Chart 1-->
+                        <div class="srow">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title mb-0">वर्ष में कुल , स्वीकृत , अस्वीकृत अवकाश</h4>
+                                </div>
+                                <div class="card-content">
+                                    <div class="chart">
+                                        <canvas baseChart [type]="pieChartType" [datasets]="pieChartData"
+                                            [labels]="pieChartLabels" [options]="pieChartOptions"
+                                            [legend]="pieChartLegend">
+                                        </canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 2nd Col -->
+                    <div class="col-md-6">
+                        <!-- First Row -->
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 class="card-title mb-0">कुल आवेदन</h4>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span style="font-weight: bold; font-size: 1.3em; "> </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-left: 67px; height: 116px;">
+                                <button class="mat-fab" mat-fab
+                                    style="    background: linear-gradient(135deg, #f48665 0%, #fda23f 100%) !important;"
+                                    aria-label="Example icon button with a delete icon">
+                                    <label>{{this.RL}} </label><br>
+                                    <label> TOTAL RL</label>
+                                </button>
+                                &nbsp;&nbsp;
+                                <button class="mat-fab" mat-fab
+                                    style="background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%) !important;"
+                                    aria-label="Example icon button with a delete icon">
+                                    <label>{{this.CL}} </label>
+                                    <label> TOTAL CL</label>
+                                </button>
+                                &nbsp;&nbsp;
+                                <button class="mat-fab" mat-fab
+                                    style="background: linear-gradient(135deg, #9a56ff 0%, #e36cd9 100%) !important;"
+                                    aria-label="Example icon button with a delete icon">
+                                    <label>{{this.EL}} </label><br>
+                                    <label> TOTAL EL</label>
+                                </button>
+                                &nbsp;&nbsp;
+                                <button class="mat-fab" mat-fab
+                                    style="background: linear-gradient(135deg, #289cf5, #84c0ec) !important;"
+                                    aria-label="Example icon button with a delete icon">
+                                    <label>{{this.HPL}} </label>
+                                    <label> TOTAL HPL</label>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Second Row -->
+                        <!-- Calendar -->
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body" style="padding-right:30px">
+                                    <full-calendar [options]="calendarOptions"></full-calendar>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

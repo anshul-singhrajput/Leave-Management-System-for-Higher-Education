@@ -1,0 +1,134 @@
+@media print {
+  .hide-in-print{
+      display: none !important;
+  }
+}
+
+
+
+
+/* //TO-DO: tidy up style */
+
+.wrapper {
+margin-top: 2vh;
+}
+
+.dataTables_filter {
+float: right;
+}
+
+.table-hover > tbody > tr:hover {
+  background-color: lighten(cyan, 40%);
+}
+/* //important if we want to add ellipsis
+//to cells with content longer than width */
+.table {
+@media only screen and (min-width: 768px) {
+  table-layout: fixed;
+  /* //this declaration overwrites 
+  //the default plugin style */
+  max-width: 100% !important;
+}
+}
+
+thead {
+background: #ddd;
+}
+
+.table td:nth-child(2) {
+overflow: hidden;
+/* //white-space: nowrap; */
+text-overflow: ellipsis;
+}
+
+.highlight {
+background: lighten(yellow,30%);
+}
+
+@media only screen and (max-width: 767px) {
+
+/* Force table to not be like tables anymore */
+table,
+thead,
+tbody,
+th,
+td,
+tr {
+  display: block;
+}
+/* Hide table headers (but not display: none;, for accessibility) */
+thead tr,
+tfoot tr {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+td {
+  /* Behave  like a "row" */
+  border: none;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  padding-left: 50% !important;
+}
+td:before {
+  /* Now like a table header */
+  position: absolute;
+  /* Top/left values mimic padding */
+  top: 6px;
+  left: 6px;
+  width: 45%;
+  padding-right: 10px;
+  white-space: nowrap;
+}
+
+.table td:nth-child(1) {
+    background: #ccc;
+    height: 100%;
+    top: 0;
+    left: 0;
+    font-weight: bold;
+}
+/*
+Label the data
+*/
+td:nth-of-type(1):before {
+  content: "क्र.";
+}
+td:nth-of-type(2):before {
+  content: "आवेदन क्रमांक";
+}
+td:nth-of-type(3):before {
+  content: "अवकाश का प्रकार";
+}
+td:nth-of-type(4):before {
+  content: "आवेदन की अवधि";
+}
+td:nth-of-type(5):before {
+  content: "आवेदन की तिथि";
+}
+td:nth-of-type(6):before {
+  content: "स्थिति";
+}
+/* td:nth-of-type(5):before {
+  content: "Start date";
+}
+td:nth-of-type(6):before {
+  content: "Salary";
+} */
+
+.dataTables_length {
+  display: none;
+}
+}
+
+.alert-msg label {
+color: #000;
+}
+
+.alert-darks {
+color: #1b1e21;
+background-color: #d6d8d9;
+border-color: #c6c8ca;
+}
+
+

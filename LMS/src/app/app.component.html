@@ -1,0 +1,24 @@
+<!-- <app-main-header *ngIf="islogin == true"></app-main-header> -->
+<app-header *ngIf="islogin == true"></app-header>
+
+<app-sidebar *ngIf="islogin == true"></app-sidebar>
+
+<!-- affter login Router serve here -->
+<div *ngIf="islogin==true" class="main-content">
+    <div class="section">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+<!-- before Login Router Serve here -->
+<div *ngIf="islogin==false">
+    <!-- Main header Call -->
+    <app-main-header></app-main-header>
+
+    <router-outlet></router-outlet>
+
+    <!-- Footer -->
+    <app-main-footer></app-main-footer>
+</div>
+
+<app-footer *ngIf="islogin == true"></app-footer>

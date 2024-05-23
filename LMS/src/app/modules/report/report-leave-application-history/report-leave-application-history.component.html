@@ -1,0 +1,48 @@
+<div class="section-header">
+    <h1>वर्तमान वर्ष में अवकाश आवेदन की जानकारी</h1>
+    <div class="section-header-breadcrumb">
+        <div class="breadcrumb-item active"><a href="#">अवकाश</a></div>
+        <div class="breadcrumb-item">वर्तमान वर्ष में अवकाश आवेदन की जानकारी</div>
+    </div>
+</div> 
+
+<div class="section-body"> 
+    <div class="card mt-3">
+        <div class="card-body">
+            <div class="wrapper">
+
+                <table class="table table-bordered table-hover" cellspacing="0" width="100%">
+                  <thead class="text-bold">
+                    <tr>
+                      <td class="text-center">क्र.</td>
+                      <td class="text-center">आवेदन क्रमांक</td>
+                      <td class="text-center">अवकाश का प्रकार</td>
+                      <td class="text-center">दिनांक से</td>
+                      <td class="text-center">दिनांक तक</td>
+                      <td class="text-center">अवकाश की संख्या</td>
+                      <td class="text-center">अवकाश Prefix</td>
+                      <td class="text-center">अवकाश Suffix</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let c of LeaveApplication; let i = index">
+                      <td class="text-center">{{i+1}}</td>
+                      <td class="text-center">{{c.ApplicationId}}</td>
+                      <td>{{c.LeaveName}}</td>
+                      <td class="text-center">{{c.LeaveFrom}}</td>
+                      <td class="text-center">{{c.LeaveTo}}</td>
+                      <td class="text-center">{{c.LeaveDays}}</td>
+                      <td class="text-center">{{c.Prefix}}</td>
+                      <td class="text-center">{{c.Suffix}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+
+                <Label *ngIf="MsgShow" class="text-center" style="color:red;">
+                  रिकॉर्ड उपलब्ध नहीं है</Label>
+
+              </div>
+        </div>
+    </div>
+</div>

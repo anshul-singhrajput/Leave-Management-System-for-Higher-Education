@@ -1,0 +1,69 @@
+<div class="section-header">
+  <h1>अवकाश के बाद ज्वाइन करे </h1>
+  <div class="section-header-breadcrumb">
+    <div class="breadcrumb-item active"><a href="#">अवकाश</a></div>
+    <div class="breadcrumb-item">अवकाश के बाद ज्वाइन करे</div>
+  </div>
+</div>
+
+<div class="section-body">
+  <div class="card mt-3">
+    <div class="card-body">
+      <section id="multiple-validation">
+        <form [formGroup]="joinleaveform" novalidate>
+          <div id="divMsg" *ngIf="showvali" [ngClass]="msgCls" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">
+                  <i class="ft-x font-medium-2 text-bold-700"></i>
+                </span>
+            </button>
+            <span id="spnMsg">{{msg}}</span>
+        </div>
+          <div class="table-responsive pagination_none">
+            <table id="excel-table" class="table table-hover table-bordered">
+              <thead class="thead-light">
+                <tr>
+                  <th>क्रमांक</th>
+                  <th>आवेदन क्रमांक</th>
+                  <th>अवकाश का प्रकार</th>
+                  <th>दिनांक से - दिनांक तक</th>
+                  <th>Prefix / Suffix</th>
+                  <th>ज्वाइन करने का दिनांक</th>
+                  <th>ज्वाइन करें</th>
+                </tr>
+              </thead>
+              <tbody formArrayName="joinl" *ngFor="let l of leaves; let i = index">
+                <tr [formGroupName]="i">
+                  <td>{{i+1}}</td>
+                  <td>{{l.ApplicationId}}</td>
+                  <td>{{l.LeaveNames.substr(1)}}</td>
+                  <td>{{l.FromToDate}}</td>
+                  <td>{{l.PrefixSuffix}}</td>
+                  <td>
+                    <input type="text" id="'txtjoiningdate'+i" class="form-control" autocomplete="off"
+                      formControlName="txtjoiningdate" bsDatepicker [bsConfig]="bsdate" placeholder="DD/MM/YYYY">
+                    <input type="hidden" id="txtToDate" formControlName="txtToDate" [ngModel]="l.ToDate">
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-primary" (click)="takeaction(l.ApplicationId,l.LId,i)">
+                      ज्वाइन करें
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+
+
+              <tbody *ngIf="groupcount==0">
+                <tr>
+                  <td colspan="12" style="text-align: center;">
+                    कोई रिकॉर्ड उपलब्ध नहीं है
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+</div>

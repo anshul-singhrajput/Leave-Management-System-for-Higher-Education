@@ -1,0 +1,159 @@
+<div class="section-header">
+    <h1>PDF डाउनलोड करें</h1>
+    <div class="section-header-breadcrumb">
+        <div class="breadcrumb-item active"><a href="#">अवकाश</a></div>
+        <div class="breadcrumb-item">PDF डाउनलोड करें</div>
+    </div>
+</div>
+
+<div class="section-body">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-10">
+                <div class="hide-in-print">
+                    <button type="button" class="btn btn-secondary" (click)="back()">Back</button>
+                </div>
+            </div>
+            <div class="col-1">
+                <div class="hide-in-print">
+                    <button type="button" class="btn btn-primary" (click)="print('printCard')">Print</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card my-3 shadow-sm">
+                    <div class="card-body" id="printCard">
+                        <form>
+                            <div class="row">
+                                <div class="col-lg-12 text-center">
+                                    <img src='assets/images/government-of-chhattisgarh.png'
+                                        style="display: inline-block; width:60px; height:60px; margin-top: -35px; margin-right: 20px;">
+                                    <p class="modal-title" id="exampleModalLabel"
+                                        style="font-size: 12px; display: inline-block;">
+                                        <span> उच्च शिक्षा विभाग</span>
+                                        <span> उच्च शिक्षा संचालनालय</span>
+                                        <span> इन्द्रावती भवन अटल नगर, नवा रायपुर, छ.ग.</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <hr style="border-top: 2px solid rgb(0, 0, 0);">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <p class="text-right">
+                                        आवेदन क्रमांक : {{EmpData.ApplicationId}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 text-center">
+                                    <p class="modal-title" id="exampleModalLabel" style="font-size: 16px;">
+                                        <span> <strong>उच्च शिक्षा विभाग</strong></span>
+                                        <span> <strong>उच्च शिक्षा संचालनालय</strong></span>
+                                        <span> <strong>इन्द्रावती भवन अटल नगर, नवा रायपुर, छ.ग.</strong></span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12 text-left">
+                                    <p class="modal-title" id="exampleModalLabel">
+                                        <span> प्रति,</span>
+                                        <span> {{PDFTo}}</span>
+                                        <span> विषय - अवकाश के लिये आवेदन</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-lg-12 text-left">
+                                    <p class="modal-title" id="exampleModalLabel">
+                                        <strong> CL:</strong> {{CL}} <strong> RH:</strong> {{RH}} <strong> EL:</strong>
+                                        {{EL}}
+                                        <strong> HPL:</strong>{{HPL}}
+                                    </p>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-lg-12 text-left">
+                                    <p class="modal-title" id="exampleModalLabel">
+                                        <strong> अवकाश का कारण : </strong> {{EmpData.Reason}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="table-responsive pagination_none">
+                                <table id="excel-table" class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>क्रमांक</th>
+                                            <th>अवकाश का प्रकार</th>
+                                            <th>दिनांक से </th>
+                                            <th>दिनांक तक</th>
+                                            <th>अवकाश की अवधि</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody *ngFor="let l of leaves; let i = index">
+                                        <tr>
+                                            <td>{{i+1}}</td>
+                                            <td>{{l.LeaveName }}</td>
+                                            <td>{{l.FromDate | date: 'dd/MM/yyyy'}}</td>
+                                            <td>{{l.ToDate | date: 'dd/MM/yyyy'}}</td>
+                                            <td>{{l.LeaveDays}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br>
+                            <div class="table-responsive pagination_none">
+                                <table id="excel-table" class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Prefix</th>
+                                            <th style="font-weight: normal;">{{EmpData.Prefix}}</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Suffix</th>
+                                            <td>{{EmpData.Suffix}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>स्टेशन से बाहर जाने की अनुमति </th>
+                                            <td>{{EmpData.IsOutOfStation}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>अवकाश के दौरान पता </th>
+                                            <td>{{EmpData.AddressDuringLeave}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>रिमार्क</th>
+                                            <td>{{EmpData.Remarks}}</td>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <br />
+                            <br />
+                            <div class="row">
+                                <div class="col-lg-12 text-right" style="padding-right: 60px;">
+                                    <p class="modal-title" id="exampleModalLabel">
+                                        भवदीय
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 text-right">
+                                    <p class="modal-title" id="exampleModalLabel">
+                                        <span> {{EmpData.EmpName}} </span>
+                                        <span> कर्मचारी कोड : {{EmpData.EmployeeId}} </span>
+                                        <span> {{EmpData.AppliedDate | date: 'dd/MM/yyyy'}} </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

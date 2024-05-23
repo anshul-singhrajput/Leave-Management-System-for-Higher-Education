@@ -1,0 +1,374 @@
+<div class="section-header">
+    <h1>अवकाश के लिए आवेदन करे </h1>
+    <div class="section-header-breadcrumb">
+        <div class="breadcrumb-item active"><a href="#">अवकाश</a></div>
+        <div class="breadcrumb-item">अवकाश के लिए आवेदन करे</div>
+    </div>
+</div>
+
+<div class="section-body">
+    <!-- Form Start -->
+    <form [formGroup]="applyleaveform" (ngSubmit)="saveleave()" novalidate>
+
+        <div id="divMsg" *ngIf="showvali" [ngClass]="msgCls" role="alert">
+            <span id="spnMsg">{{msg}}</span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"><i
+                        class="ft-x font-medium-2 text-bold-700"></i></span>
+            </button>
+            <span id="spnMsg">{{msg}}</span> -->
+        </div>
+
+        <div class="card mt-3">
+            <div class="card-body">
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>आवेदन का प्रकार<span style='color: red;'>*</span></label>
+                            <select type="form-select" id="ddlleaveappltype" (change)="onleaveappltypeChange($event)"
+                                formControlName="ddlleaveappltype" class="form-control" required>
+                                <option value="" selected>--चयन करें--</option>
+                                <option value="1"> एक अवकाश</option>
+                                <option value="2"> एक से अधिक अवकाश</option>
+                            </select>
+                            <span class="help-block"
+                                *ngIf="applyleaveform.get('ddlleaveappltype')?.errors && (applyleaveform.get('ddlleaveappltype')?.touched  || submitted)">
+                                <span class="text-danger text-sm"
+                                    *ngIf="applyleaveform.get('ddlleaveappltype')?.errors?.['required']">
+                                    <!--.required -->
+                                    आवेदन का प्रकार चयन करें
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>कारण<span style='color: red;'>*</span></label>
+                            <div class="controls">
+                                <input type="text" id="txtreason" formControlName="txtreason" class="form-control"
+                                    name="reason" maxLength=100 required
+                                    [ngClass]="{'border border-danger':applyleaveform.get('txtreason')?.errors && (applyleaveform.get('txtreason')?.touched || submitted )}">
+                            </div>
+                            <span class="help-block"
+                                *ngIf="applyleaveform.get('txtreason')?.errors && (applyleaveform.get('txtreason')?.touched || submitted )">
+                                <span class="text-danger text-sm"
+                                    *ngIf="applyleaveform.get('txtreason')?.errors?.['required']"> <!--?.required -->
+                                    कारण प्रविष्ट करें
+                                </span>
+                                <!-- <span class="text-danger text-sm"
+                                                        *ngIf="applyleaveform.controls.txtreason.errors?.['maxlength']">
+                                                        कारण 100 अक्षर तक प्रविष्ट करें.
+                                                    </span>
+                                                    <span class="text-danger text-sm"
+                                                        *ngIf="applyleaveform.controls.txtreason.errors?.['pattern']">
+                                                        सही कारण प्रविष्ट करें.
+                                                    </span> -->
+                            </span>
+
+                        </div>
+                    </div>
+
+
+                    <div formArrayName="leaves" *ngFor="let leave of faleave.controls; let i =index">
+                        <hr *ngIf="i>0">
+                        <div [formGroupName]="i">
+                            <div class="row">
+                                <!-- Type of Leave Drop Down -->
+                                <div class="col-md-2 col-12">
+                                    <div class="form-group mb-2">
+                                        <label [attr.for]="'ddlleavetype'+i">अवकाश का प्रकार<span
+                                                style='color: red;'>*</span></label>
+                                        <div *ngIf="i>0">
+                                            <select class="form-select" formControlName="ddlleavetype"
+                                                [id]="'ddlleavetype'+i" class="form-control" required
+                                                (change)="onleavetypeChange($event,i)">
+                                                <option value="" selected>--चयन करें--</option>
+                                                <option *ngFor="let l of leavetypemulti" [value]="l.LeaveId">
+                                                    {{l.LeaveName}}</option>
+                                            </select>
+                                        </div>
+                                        <div *ngIf="i<=0">
+                                            <select type="text" [id]="'ddlleavetype'+i" formControlName="ddlleavetype"
+                                                class="form-control" required (change)="onleavetypeChange($event,i)">
+                                                <option value="" selected>--चयन करें--</option>
+                                                <option *ngFor="let l of leavetype" [value]="l.LeaveId">
+                                                    {{l.LeaveName }}</option>
+                                            </select>
+                                        </div>
+                                        <span class="help-block"
+                                            *ngIf="leave.get('ddlleavetype')?.errors && (leave.get('ddlleavetype')?.touched  || submitted)">
+                                            <span class="text-danger text-sm"
+                                                *ngIf="leave.get('ddlleavetype')?.errors?.['required']">
+                                                अवकाश का प्रकार चयन करें
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <!-- Max Leave Input Box -->
+                                <div class="col-md-2 col-12">
+                                    <div class="form-group mb-2">
+                                        <label for="'txtmaxlimit'+i">अधिकतम अवकाश</label>
+                                        <input type="text" id="'txtmaxlimit'+i" formControlName="txtmaxlimit"
+                                            class="form-control" name="txtmaxlimit" readonly>
+                                    </div>
+                                </div>
+
+                                <!-- From Date -->
+
+                                <div class="col-md-3 col-12">
+                                    <div class="form-group mb-2">
+                                        <label for="'txtfromdate'+i">से <span style='color: red;'>*</span></label>
+
+                                        <div class="controls">
+                                            <input type="text" id="'txtfromdate'+i" class="form-control"
+                                                formControlName="txtfromdate" bsDatepicker autocomplete="off"
+                                                [bsConfig]="bsdatefrom" placeholder="DD/MM/YYYY"
+                                                (ngModelChange)="onFromDateChange(i)" required>
+                                            <span class="help-block"
+                                                *ngIf="leave.get('txtfromdate')?.errors && (leave.get('txtfromdate')?.touched || added || submitted)">
+                                                <span class="text-danger text-sm"
+                                                    *ngIf="leave.get('txtfromdate')?.errors?.['required']">
+                                                    दिनांक से प्रविष्ट करें
+                                                </span>
+                                                <span class="text-danger text-sm"
+                                                    *ngIf="leave.get('txtfromdate')?.errors?.['pattern']">
+                                                    सही दिनांक से प्रविष्ट करें.
+                                                </span>
+                                            </span>
+                                            <div *ngIf="leave.get('ddlleavetype')?.value==1">
+                                                <select type="text" id="'ddlfromday'+i" formControlName="ddlfromday"
+                                                    class="form-control" (change)="onfromdayChange($event,i)" required>
+                                                    <option value="" selected>--चयन करें--</option>
+                                                    <option value="1">Fullday</option>
+                                                    <option value="2">Halfday</option>
+                                                </select>
+                                                <span class="help-block"
+                                                    *ngIf="leave.get('ddlfromday')?.errors && (leave.get('ddlfromday')?.touched || added || submitted)">
+                                                    <span class="text-danger text-sm"
+                                                        *ngIf="leave.get('ddlfromday')?.errors?.['required']">
+                                                        Halfday/Fullday चयन करें
+                                                    </span>
+                                                </span>
+                                                <div *ngIf="leave.get('ddlfromday')?.value==2">
+                                                    <select type="text" id="'ddlfromnoon'+i"
+                                                        formControlName="ddlfromnoon" class="form-control"
+                                                        (change)="onfromnoonChange($event,i)">
+                                                        <option value="" selected>--चयन करें--</option>
+                                                        <option value="1">Forenoon</option>
+                                                        <option value="2">Afternoon</option>
+                                                    </select>
+                                                    <span class="help-block"
+                                                        *ngIf="leave.get('ddlfromnoon')?.errors && (leave.get('ddlfromnoon')?.touched || added || submitted)">
+                                                        <span class="text-danger text-sm"
+                                                            *ngIf="leave.get('ddlfromnoon')?.errors?.['required']">
+                                                            Forenoon/Afternoon चयन करें
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- To Date -->
+
+                                <div class="col-md-3 col-12">
+                                    <div class="form-group mb-2">
+                                        <label for="'txttodate'+i">तक <span style='color: red;'>*</span></label>
+                                        <input type="text" id="'txttodate'+i" class="form-control" autocomplete="off"
+                                            formControlName="txttodate" bsDatepicker [bsConfig]="bsdateto"
+                                            placeholder="DD/MM/YYYY" required (ngModelChange)="onToDateChange(i)">
+
+                                        <span class="help-block"
+                                            *ngIf="leave.get('txttodate')?.errors && (leave.get('txttodate')?.touched || added || submitted )">
+                                            <span class="text-danger text-sm"
+                                                *ngIf="leave.get('txttodate')?.errors?.['required']">
+                                                दिनांक तक प्रविष्ट करें
+                                            </span>
+                                            <span class="text-danger text-sm"
+                                                *ngIf="leave.get('txttodate')?.errors?.['pattern']">
+                                                सही दिनांक तक प्रविष्ट करें.
+                                            </span>
+                                        </span>
+                                        <div *ngIf="leave.get('ddlleavetype')?.value==1">
+                                            <select type="text" id="'ddltoday'+i" formControlName="ddltoday"
+                                                class="form-control" (change)="ontodayChange($event,i)" required>
+                                                <option value="" selected>--चयन करें--</option>
+                                                <option value="1">Fullday</option>
+                                                <option value="2">Halfday</option>
+                                            </select>
+                                            <span class="help-block"
+                                                *ngIf="leave.get('ddltoday')?.errors && (leave.get('ddltoday')?.touched || added || submitted)">
+                                                <span class="text-danger text-sm"
+                                                    *ngIf="leave.get('ddltoday')?.errors?.['required']">
+                                                    Halfday/Fullday चयन करें
+                                                </span>
+                                            </span>
+                                            <div *ngIf="leave.get('ddltoday')?.value==2">
+                                                <select type="text" id="'ddltonoon'+i" formControlName="ddltonoon"
+                                                    class="form-control" (change)="ontonoonChange($event,i)">
+                                                    <option value="" selected>--चयन करें--</option>
+                                                    <option value="1">Forenoon</option>
+                                                    <option value="2">Afternoon</option>
+                                                </select>
+                                                <span class="help-block"
+                                                    *ngIf="leave.get('ddltonoon')?.errors && (leave.get('ddltonoon')?.touched || added || submitted)">
+                                                    <span class="text-danger text-sm"
+                                                        *ngIf="leave.get('ddltonoon')?.errors?.['required']">
+                                                        Forenoon/Afternoon चयन करें
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Total selected Leave Days -->
+                                <div class="col-md-2 col-12">
+                                    <div class="form-group mb-2">
+                                        <label for="'txtleavedays'+i">अवकाश (दिन में)</label>
+                                        <input type="text" id="'txtleavedays'+i" formControlName="txtleavedays"
+                                            class="form-control" name="txtleavedays" readonly>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="applyleaveform.get('ddlleaveappltype')?.value==2" class="form-row mb-2">
+                        <div class="col-md-4 offset-md-9 col-12">
+                            <button type="button" class="btn btn-success mr-2" (click)="addleave()">
+                                <i class="ft-plus mr-1"></i>जोड़ें</button>
+                            <button *ngIf="groupcount>0" type="button" class="btn btn-danger" (click)="removeleave()">
+                                <i class="ft-trash-2 mr-1"></i>हटायें</button>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                    <div class="form-row">
+                        <div class="col-md-4 col-12">
+                            <div class="form-group mb-2">
+                                <label for="ddlstationleave"> स्टेशन छोड़ने की अनुमति ? <span
+                                        style='color: red;'>*</span></label>
+
+                                <select type="text" id="ddlstationleave" (change)="onstationleave($event)"
+                                    formControlName="ddlstationleave" class="form-select" required>
+                                    <option value="" selected>--चयन करें--</option>
+                                    <option value="1"> हाँ </option>
+                                    <option value="0"> नहीं </option>
+                                </select>
+
+                                <span class="help-block"
+                                    *ngIf="applyleaveform.get('ddlstationleave')?.errors && (applyleaveform.get('ddlstationleave')?.touched  || submitted)">
+                                    <span class="text-danger text-sm"
+                                        *ngIf="applyleaveform.get('ddlstationleave')?.errors?.['required']">
+                                        स्टेशन छोड़ने की अनुमति, चयन करें .
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 col-12">
+                            <div class="form-group mb-2">
+                                <label for="txtaddressduringleave">अवकाश अवधि के दौरान पता <span
+                                        style='color: red;'>*</span></label>
+
+                                <div class="controls">
+                                    <input type="text" id="txtaddressduringleave"
+                                        formControlName="txtaddressduringleave" class="form-control" name="reason"
+                                        maxLength=100 required
+                                        [ngClass]="{'border border-danger':applyleaveform.get('txtaddressduringleave')?.errors && (applyleaveform.get('txtaddressduringleave')?.touched || submitted )}">
+                                </div>
+                                <span class="help-block"
+                                    *ngIf="applyleaveform.get('txtaddressduringleave')?.errors && (applyleaveform.get('txtaddressduringleave')?.touched || submitted )">
+                                    <span class="text-danger text-sm"
+                                        *ngIf="applyleaveform.get('txtaddressduringleave')?.errors?.['required']">
+                                        अवकाश के दौरान पता प्रविष्ट करें
+                                    </span>
+                                    <!-- <span class="text-danger text-sm"
+                                        *ngIf="f['txtaddressduringleave'].errors && f['txtaddressduringleave'].errors['maxLength']">
+                                        अवकाश के दौरान पता 100 अक्षर तक प्रविष्ट करें.
+                                    </span> -->
+                                    <!-- <span class="text-danger text-sm"
+                                        *ngIf="applyleaveform.controls.txtaddressduringleave.errors?.['pattern']">
+                                        सही अवकाश के दौरान पता प्रविष्ट करें.
+                                    </span> -->
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12 col-12">
+                            <div class="form-group mb-2">
+                                <label for="txtremarks">रिमार्क</label>
+                                <textarea id="txtremarks" rows="2" formControlName="txtremarks" class="form-control"
+                                    name="txtremarks" maxlength=500></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 col-12">
+                            <div class="form-group mb-2">
+                                <label for="fuuploadpath">अपलोड <span style='color: red;'>( <small>.pdf या image
+                                        </small> फाइल 25 MB साइज़ तक)</span></label>
+                                <input type="file" id="fuuploadpath" formControlName="fuuploadpath" class="form-control"
+                                    name="fuuploadpath" (change)="onSelectFile($event)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group text-center">
+                                <button class="btn btn-primary" type="submit">आवेदन करे</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- </div> -->
+            <!-- Form End -->
+
+        </div>
+    </form>
+</div>
+
+
+<!-- Modal -->
+<div class="modal bg-transparents" id="myModal" [style.display]="showModal ? 'block' : 'none'">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Success</h4>
+          <button type="button" class="close" data-dismiss="modal" (click)="hide()">&times;</button>
+
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          {{ msg }}
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" [routerLink]="['/report/printlvapplication',LId]" (click) = "hide()">pdf डाउनलोड करें</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
